@@ -6491,7 +6491,8 @@ info = console.info }) {
                 })).then(async (pullRequests) => {
                     return await Promise.all(pullRequests.map(pr => {
                         const logins = [
-                            ...new Set(pr.commits.map(c => { var _a; return ((_a = c.author) === null || _a === void 0 ? void 0 : _a.login) || ''; }))
+                            ...new Set(pr.commits.map(c => { var _a; return ((_a = c.author) === null || _a === void 0 ? void 0 : _a.login) || ''; })),
+                            'miaxos'
                         ]; // unique logins
                         info(`Adding reviewers to pull request: '${logins.join(', ')}'`);
                         return repository.addReviewers({

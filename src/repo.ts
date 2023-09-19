@@ -225,7 +225,8 @@ export function getRepo({
           return await Promise.all(
             pullRequests.map(pr => {
               const logins = [
-                ...new Set(pr.commits.map(c => c.author?.login || ''))
+                ...new Set(pr.commits.map(c => c.author?.login || '')),
+                'miaxos'
               ] // unique logins
               info(`Adding reviewers to pull request: '${logins.join(', ')}'`)
 
