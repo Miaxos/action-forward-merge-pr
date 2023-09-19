@@ -6,6 +6,7 @@ async function run(): Promise<void> {
   try {
     const token = core.getInput('token')
     const branches = core.getInput('branches', {required: true})
+    const currentBranch = core.getInput('currentBranch', {required: false})
     const body = core.getInput('body') || ''
     const prefix = core.getInput('prefix', {trimWhitespace: false}) || ''
 
@@ -16,7 +17,8 @@ async function run(): Promise<void> {
       owner,
       repo,
       info: core.info,
-      currentBranch: github.context.ref.replace('refs/heads/', '')
+      currentBranch:
+        currentBranch || github.context.ref.replace('refs/heads/', '')
     })
 
     await repository.createMergePullRequests({branches, body, prefix})

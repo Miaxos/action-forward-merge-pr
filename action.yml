@@ -17,6 +17,9 @@ inputs:
   prefix:
     description: 'Optional prefix to the PR title. Useful if you use some type of semantic commit pull request title validator'
     required: false
+  curentBranch:
+    description: 'The current branch to use the for the merge'
+    required: false
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
